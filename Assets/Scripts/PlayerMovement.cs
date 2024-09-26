@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Player _player;
+
     private PlayerControls _controls;
     private CharacterController _characterController;
     private Animator _animator;
@@ -16,23 +18,21 @@ public class PlayerMovement : MonoBehaviour
     private bool _isRunning;
 
     [Header("Aim info")] [SerializeField] private Transform aim;
-    [SerializeField] private LayerMask _aimLayerMask;
+    [SerializeField] private LayerMask aimLayerMask;
     private Vector3 _lookingDirection;
 
     private Vector2 _moveInput;
     private Vector2 _aimInput;
 
-    private void Awake()
-    {
-        AssignInputEvents();
-    }
-
     private void Start()
     {
+        _player = GetComponent<Player>();
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponentInChildren<Animator>();
 
         _speed = walkSpeed;
+
+        AssignInputEvents();
     }
 
     private void Update()
@@ -40,12 +40,6 @@ public class PlayerMovement : MonoBehaviour
         ApplyMovement();
         AimTowardsMouse();
         AnimatorControllers();
-    }
-
-    private void Shoot()
-    {
-        Debug.Log("Fire!");
-        _animator.SetTrigger("Fire");
     }
 
     private void AnimatorControllers()
@@ -63,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
     private void AimTowardsMouse()
     {
         Ray ray = Camera.main.ScreenPointToRay(_aimInput);
-        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _aimLayerMask))
+        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, aimLayerMask))
         {
             _lookingDirection = hitInfo.point - transform.position;
             _lookingDirection.y = 0f;
@@ -71,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.forward = _lookingDirection;
 
-            aim.position = new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z);
+            aim.position = new Vector3(hitInfo.point.x, transform.position.y + 1, hitInfo.point.z);
         }
     }
 
@@ -99,13 +93,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    #region Input System
-
     private void AssignInputEvents()
     {
-        _controls = new PlayerControls();
-        
-        _controls.Character.Fire.performed += context => Shoot();
+        _controls = _player.controls;
 
         _controls.Character.Movement.performed += context => _moveInput = context.ReadValue<Vector2>();
         _controls.Character.Movement.canceled += context => _moveInput = Vector2.zero;
@@ -124,16 +114,4 @@ public class PlayerMovement : MonoBehaviour
             _speed = walkSpeed;
         };
     }
-
-    private void OnEnable()
-    {
-        _controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _controls.Disable();
-    }
-
-    #endregion
 }
