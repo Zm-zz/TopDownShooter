@@ -8,16 +8,16 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController _characterController;
     private Animator _animator;
 
-    [Header("Movement Info")] [SerializeField]
-    private float walkSpeed;
-
+    [Header("Movement Info")] 
+    [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     private float _speed;
     private Vector3 _movementDirection;
     private float _verticalVelocity;
     private bool _isRunning;
 
-    [Header("Aim info")] [SerializeField] private Transform aim;
+    [Header("Aim info")] 
+    [SerializeField] private Transform aim;
     [SerializeField] private LayerMask aimLayerMask;
     private Vector3 _lookingDirection;
 

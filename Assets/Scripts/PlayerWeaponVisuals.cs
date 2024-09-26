@@ -19,12 +19,13 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
     #endregion
 
-    [Header("Rig")] [SerializeField] private float rigWeightIncreaseRate;
+    [Header("Rig")] 
+    [SerializeField] private float rigWeightIncreaseRate;
     private bool _shouldIncrease_RigWeight;
     [Tooltip("掌管头、枪口朝向，左手位置...")] private Rig _rig;
 
-    [Header("Left Hand IK")] [SerializeField]
-    private float leftHandIKWeightIncreaseRate;
+    [Header("Left Hand IK")] 
+    [SerializeField] private float leftHandIKWeightIncreaseRate;
 
     [SerializeField] [Tooltip("左手IK目标位置")] private Transform leftHandIK_Target;
     [SerializeField] private TwoBoneIKConstraint leftHandIK;
