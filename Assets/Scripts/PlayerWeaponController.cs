@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+    /// <summary>
+    /// 参考速度，子弹速度20 对应 子弹质量1（速度越快质量越小，才能达到不同速度一样的撞击效果）
+    /// </summary>
+    private const float REFERENCE_BULLET_SPEED = 20;
+
     private Player _player;
 
     [SerializeField] private GameObject bulletPrefab;
@@ -20,7 +25,11 @@ public class PlayerWeaponController : MonoBehaviour
     {
         // 生成子弹
         GameObject newBullet = Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
-        newBullet.GetComponent<Rigidbody>().velocity = BulletDirection() * bulletSpeed;
+
+        Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
+        // 计算子弹质量公式：如果子弹速度增加，必须缩小子弹质量才可以产生一样的撞击效果（默认速度20 对应 质量1，若速度80，那么质量为1/4）
+        rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
+        rbNewBullet.velocity = BulletDirection() * bulletSpeed;
 
         Destroy(newBullet, 10);
 

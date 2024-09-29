@@ -89,9 +89,16 @@ public class PlayerAim : MonoBehaviour
     {
         Transform target = Target();
 
-        if (target && isLockingToTarget)
+        if (isLockingToTarget && target)
         {
-            aim.position = target.position;
+            if (target.GetComponent<Renderer>() != null)
+            {
+                aim.position = target.GetComponent<Renderer>().bounds.center;
+            }
+            else
+            {
+                aim.position = target.position;
+            }
             return;
         }
 
@@ -104,7 +111,7 @@ public class PlayerAim : MonoBehaviour
     }
 
     /// <summary>
-    /// 可锁敌目标
+    /// 带有Target组件的可锁敌目标
     /// </summary>
     public Transform Target()
     {

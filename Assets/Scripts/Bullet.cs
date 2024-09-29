@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // ∂≥Ω·Œª÷√
-        _rb.constraints = RigidbodyConstraints.FreezeAll;
+        // _rb.constraints = RigidbodyConstraints.FreezeAll;
+        Destroy(gameObject);
     }
 }
