@@ -52,8 +52,8 @@ public class PlayerWeaponController : MonoBehaviour
             direction.y = 0;
         }
 
-        //weaponHolder.LookAt(aim);
-        //gunPoint.LookAt(aim); // TODO: find a better place for it.
+        // weaponHolder.LookAt(aim);
+        // gunPoint.LookAt(aim); // TODO: find a better place for it.
 
         return direction;
     }
