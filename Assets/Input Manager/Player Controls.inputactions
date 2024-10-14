@@ -60,6 +60,33 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Equip Slot - 3",
+                    "type": "Button",
+                    "id": "8f5f2253-08d6-4701-88ed-6cb8c29abfff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip Slot - 4",
+                    "type": "Button",
+                    "id": "5acbf1a0-92ae-4419-8e6c-0acd90b503d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equip Slot - 5",
+                    "type": "Button",
+                    "id": "e1387aed-38b9-4750-981c-d3d27f032859",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Drop Current Weapon",
                     "type": "Button",
                     "id": "bffeacf8-ee0d-49b0-bcd8-0a5f85f2f0c4",
@@ -72,6 +99,15 @@
                     "name": "Reload",
                     "type": "Button",
                     "id": "9468b927-9439-472e-b75e-4775e26035be",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Toggle Weapon Burst",
+                    "type": "Button",
+                    "id": "ac81b22f-6af3-46bb-8013-2e6210f1d87a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -208,6 +244,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97dacc57-2825-42a9-aecd-73868e1f7f5b",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip Slot - 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66e783b1-0210-46e3-88ec-e4b9a5fa0e88",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip Slot - 4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2b8c6e7-bf4b-4ba4-90c0-ef677421fbbf",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip Slot - 5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ec2b193-b6aa-43b6-a2b6-80977fb97591",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Weapon Burst",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public enum WeaponType
 {
@@ -22,16 +21,48 @@ public class Weapon
     [Header("武器类型")]
     public WeaponType weaponType;
 
+    #region Shooting spesifics parameter
+
     [Space]
     [Header("Shooting spesifics")]
     [Header("射击类型")]
     public ShootType shootType;
+
+    [Header("子弹发射量")]
+    public int bulletsPerShot;
+
+    [Header("默认子弹攻击速率/s")]
+    public float defaultFireRate;
 
     [Header("攻击速率/s")]
     public float fireRate = 1;
 
     private float _lastShotTime;
 
+    #endregion
+
+    #region Burst Fire Parameter
+
+    [Space]
+    [Header("Burst fire")]
+    [Header("连发是否可启用")]
+    public bool burstAvailable;
+
+    [Header("连发是否启用")]
+    public bool burstActive;
+
+    [Header("连发模式子弹发射量")]
+    public int burstBulletsPerShot;
+
+    [Header("连发模式子弹速率")]
+    public float burstFireRate;
+
+    [Header("每射击延迟")]
+    public float burstFireDelay = 0.1f;
+
+    #endregion
+
+    #region Magazine Details Parameter
 
     [Space]
     [Header("Magazine details")]
@@ -52,6 +83,17 @@ public class Weapon
     [Range(1, 3)]
     public float equipmentSpeed = 1;
 
+    [Header("射击距离")]
+    [Range(2, 12)]
+    public float gunDistance = 4;
+
+    [Header("武器相机距离")]
+    [Range(3, 8)]
+    public float cameraDistance = 6;
+
+    #endregion
+
+    #region Spread
     [Space]
     [Header("Spread")]
     [Header("基础子弹分散")]
@@ -71,16 +113,51 @@ public class Weapon
 
     private float _lastSpreadUpdateTime;
 
-    public bool CanShoot()
+    #endregion
+
+    #region Burst Methods
+
+    public bool BurstActivated()
     {
-        if (HaveEnoughBullets() && ReadyToFire())
+        if (weaponType == WeaponType.Shotgun) // 霰弹枪一直启用连发状态
         {
-            bulletsInMagazine--;
+            burstFireDelay = 0;
             return true;
         }
 
-        return false;
+        return burstActive;
     }
+
+    /// <summary>
+    /// 武器连发控制开关
+    /// </summary>
+    public void ToggleBurst()
+    {
+        if (!burstAvailable)
+        {
+            return;
+        }
+
+        burstActive = !burstActive;
+
+        string debugContent = burstActive ? "连发启用" : "连发禁用";
+        Debug.LogError(debugContent);
+
+        if (burstActive)
+        {
+            bulletsPerShot = burstBulletsPerShot;
+            fireRate = burstFireRate;
+        }
+        else
+        {
+            bulletsPerShot = 1;
+            fireRate = defaultFireRate;
+        }
+    }
+
+    #endregion
+
+    public bool CanShoot() => HaveEnoughBullets() && ReadyToFire();
 
     /// <summary>
     /// 是否满足射击频率
@@ -97,7 +174,7 @@ public class Weapon
         return false;
     }
 
-    #region 子弹分散
+    #region Spread Methods
 
     /// <summary>
     /// 应用子弹分散

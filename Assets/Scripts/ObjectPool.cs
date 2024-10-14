@@ -42,6 +42,11 @@ public class ObjectPool : MonoBehaviour
         return bulletToGet;
     }
 
+    public T GetBullet<T>()
+    {
+        return GetBullet().GetComponent<T>();
+    }
+
     public void ReturnBullet(GameObject bullet)
     {
         bullet.SetActive(false);

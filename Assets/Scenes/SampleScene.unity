@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
-  equipAnimationType: 0
+  equipAnimationType: 1
   holdType: 1
   gunPoint: {fileID: 601400036}
   holdPoint: {fileID: 290719569}
@@ -548,7 +548,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 290719569}
-  - component: {fileID: 290719570}
   m_Layer: 8
   m_Name: LeftHand_TargetTransform
   m_TagString: Untagged
@@ -571,18 +570,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 65756379}
   m_LocalEulerAnglesHint: {x: 6.707, y: -77.532, z: 90.587}
---- !u!114 &290719570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 290719568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a26e8e5e5720a8041874a91144758f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &295758181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 393279061697461240, guid: ef3f3de08837dac4d99e8d2c582e3a2a, type: 3}
@@ -635,6 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
+  hangType: 2
 --- !u!1 &415679284
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,7 +784,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 469777422}
-  - component: {fileID: 469777423}
   m_Layer: 8
   m_Name: LeftHand_TargetTransform
   m_TagString: Untagged
@@ -819,18 +806,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 773210527}
   m_LocalEulerAnglesHint: {x: 6.707, y: -77.532, z: 90.587}
---- !u!114 &469777423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469777421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a26e8e5e5720a8041874a91144758f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &476502454 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1714201970452348633, guid: 7851457470c2735468519b530b7b3606, type: 3}
@@ -1131,7 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 4
-  equipAnimationType: 0
+  equipAnimationType: 1
   holdType: 3
   gunPoint: {fileID: 1093994936}
   holdPoint: {fileID: 469777422}
@@ -1310,7 +1285,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 1, z: 1.59}
+  m_LocalPosition: {x: 0, y: 6.196152, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1843,6 +1818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
+  hangType: 1
 --- !u!1 &1066253149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +1866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
+  hangType: 2
 --- !u!1 &1093994935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,7 +1907,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1103044234}
-  - component: {fileID: 1103044235}
   m_Layer: 8
   m_Name: LeftHand_TargetTransform
   m_TagString: Untagged
@@ -1953,18 +1929,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 20744607}
   m_LocalEulerAnglesHint: {x: 6.707, y: -77.532, z: 90.587}
---- !u!114 &1103044235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103044233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a26e8e5e5720a8041874a91144758f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1129452812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,15 +2176,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243265421}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.60061234, y: 0.07723255, z: 0.0040634293, w: 0.7957912}
-  m_LocalPosition: {x: 0.11381171, y: -0.048923098, z: -0.09209392}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0.0011551006, y: -0.71964765, z: 0.18719517, w: 0.6686284}
+  m_LocalPosition: {x: -0.001, y: -0.205, z: 0.003}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7242455066104442141}
   - {fileID: 2857927863076113742}
   m_Father: {fileID: 9182759217673542405}
-  m_LocalEulerAnglesHint: {x: 72.804, y: 25.612, z: 19.613}
+  m_LocalEulerAnglesHint: {x: 15.722, y: -92.131, z: 14.971}
 --- !u!114 &1243265423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2234,6 +2198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 3
+  hangType: 0
 --- !u!1 &1315671941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,6 +2300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 4
+  hangType: 1
 --- !u!1 &1356110889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,7 +2366,7 @@ Transform:
   m_GameObject: {fileID: 1356110889}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 1, z: 1.59}
+  m_LocalPosition: {x: 0, y: 6.196152, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2488,16 +2454,25 @@ MonoBehaviour:
   weapon:
     weaponType: 2
     shootType: 0
+    bulletsPerShot: 0
+    defaultFireRate: 0
     fireRate: 1
+    burstAvailable: 0
+    burstActive: 0
+    burstBulletsPerShot: 0
+    burstFireRate: 0
+    burstFireDelay: 0.1
     bulletsInMagazine: 10
     magazineCapacity: 10
     totalReserveAmmo: 100
     reloadSpeed: 1
     equipmentSpeed: 1
+    gunDistance: 6
+    cameraDistance: 6
     baseSpread: 0
-    currentSpread: 2
     maximumSpread: 3
     spreadIncreaseRate: 0.15
+    spreadCooldowm: 1
 --- !u!65 &1399543884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2819,7 +2794,7 @@ Transform:
   m_GameObject: {fileID: 1606997333}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 1.59}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2834,7 +2809,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1611500671}
-  - component: {fileID: 1611500672}
   m_Layer: 8
   m_Name: LeftHand_TargetTransform
   m_TagString: Untagged
@@ -2857,18 +2831,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 667066792}
   m_LocalEulerAnglesHint: {x: -12.612, y: -234.67401, z: 223.844}
---- !u!114 &1611500672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611500670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a26e8e5e5720a8041874a91144758f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1675488936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,45 +3407,72 @@ MonoBehaviour:
   currentWeapon:
     weaponType: 0
     shootType: 0
+    bulletsPerShot: 0
+    defaultFireRate: 0
     fireRate: 1
+    burstAvailable: 0
+    burstActive: 0
+    burstBulletsPerShot: 0
+    burstFireRate: 0
+    burstFireDelay: 0.1
     bulletsInMagazine: 0
     magazineCapacity: 0
     totalReserveAmmo: 0
     reloadSpeed: 1
     equipmentSpeed: 1
+    gunDistance: 6
+    cameraDistance: 6
     baseSpread: 0
-    currentSpread: 2
     maximumSpread: 3
     spreadIncreaseRate: 0.15
+    spreadCooldowm: 1
   bulletPrefab: {fileID: 7736562827338643264, guid: 686445dcd14032e4d9e94d63c8a606b3, type: 3}
-  bulletSpeed: 100
+  bulletSpeed: 15
   weaponHolder: {fileID: 1582371072}
   maxSlots: 2
   weaponSlots:
-  - weaponType: 0
+  - weaponType: 3
     shootType: 0
-    fireRate: 5
+    bulletsPerShot: 5
+    defaultFireRate: 1
+    fireRate: 1
+    burstAvailable: 0
+    burstActive: 0
+    burstBulletsPerShot: 0
+    burstFireRate: 0
+    burstFireDelay: 0
     bulletsInMagazine: 100
     magazineCapacity: 100
     totalReserveAmmo: 50055
     reloadSpeed: 3
     equipmentSpeed: 3
-    baseSpread: 0.5
-    currentSpread: 0.5
-    maximumSpread: 3
+    gunDistance: 2.5
+    cameraDistance: 6
+    baseSpread: 15
+    maximumSpread: 15
     spreadIncreaseRate: 0.15
+    spreadCooldowm: 1
   - weaponType: 2
     shootType: 1
+    bulletsPerShot: 1
+    defaultFireRate: 10
     fireRate: 10
+    burstAvailable: 1
+    burstActive: 0
+    burstBulletsPerShot: 3
+    burstFireRate: 1.5
+    burstFireDelay: 0.1
     bulletsInMagazine: 100
     magazineCapacity: 100
     totalReserveAmmo: 54655
     reloadSpeed: 3
     equipmentSpeed: 3
+    gunDistance: 6
+    cameraDistance: 6
     baseSpread: 0.5
-    currentSpread: 0.5
     maximumSpread: 3
     spreadIncreaseRate: 0.15
+    spreadCooldowm: 1
 --- !u!114 &1916044634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3582,6 +3571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2001369339}
+  - component: {fileID: 2001369340}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -3598,7 +3588,7 @@ Transform:
   m_GameObject: {fileID: 2001369338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.196152, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3606,6 +3596,20 @@ Transform:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2001369340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001369338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dfe1de0a72fa4c49ae2515fe443420a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canChangeCameraDistance: 0
+  distanceChangeRate: 0.5
 --- !u!1 &2004848305 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8414591410859303261, guid: 7851457470c2735468519b530b7b3606, type: 3}
@@ -3632,7 +3636,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2104505383}
-  - component: {fileID: 2104505384}
   m_Layer: 8
   m_Name: LeftHand_TargetTransform
   m_TagString: Untagged
@@ -3655,18 +3658,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 994315889}
   m_LocalEulerAnglesHint: {x: 0.317, y: -84.648, z: 100.674}
---- !u!114 &2104505384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104505382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a26e8e5e5720a8041874a91144758f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2131698066
 GameObject:
   m_ObjectHideFlags: 0
@@ -7233,6 +7224,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 456861762}
+  - {fileID: 2131698068}
   - {fileID: 2001369339}
   - {fileID: 705507995}
   - {fileID: 1923104009}
@@ -7242,4 +7234,3 @@ SceneRoots:
   - {fileID: 280273158}
   - {fileID: 1399543882}
   - {fileID: 7200299548201860507}
-  - {fileID: 2131698068}

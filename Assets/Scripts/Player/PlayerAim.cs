@@ -80,7 +80,7 @@ public class PlayerAim : MonoBehaviour
         Vector3 laserDirection = _player.weapon.BulletDirection();
 
         float laserTipLength = .5f; // 激光终点之后延伸出的渐变透明的激光束的长度
-        float gunDistance = 4;
+        float gunDistance = _player.weapon.CurrentWeapon().gunDistance;
 
         Vector3 endPoint = gunPoint.position + laserDirection * gunDistance;
 

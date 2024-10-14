@@ -38,11 +38,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
     }
 
     /// <summary>
-    /// 播放开火动画
-    /// </summary>
-    public void PlayFireAnimation() => _animator.SetTrigger("Fire");
-
-    /// <summary>
     /// 获取当前的武器模型
     /// </summary>
     public WeaponModel CurrentWeaponModel()
@@ -61,6 +56,13 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         return weaponModel;
     }
+
+    #region Play Animation
+
+    /// <summary>
+    /// 播放开火动画
+    /// </summary>
+    public void PlayFireAnimation() => _animator.SetTrigger("Fire");
 
     public void PlayReloadAnimation()
     {
@@ -86,6 +88,10 @@ public class PlayerWeaponVisuals : MonoBehaviour
         _animator.SetTrigger("EquipWeapon");
         _animator.SetFloat("EquipSpeed", equipmentSpeed);
     }
+
+    #endregion
+
+    #region On Hand's Weapon
 
     /// <summary>
     /// 打开当前武器模型
@@ -118,33 +124,6 @@ public class PlayerWeaponVisuals : MonoBehaviour
     }
 
     /// <summary>
-    /// 关闭所有备用武器模型
-    /// </summary>
-    private void SwitchOffBackupWeaponModels()
-    {
-        for (int i = 0; i < backupWeaponModels.Length; i++)
-        {
-            backupWeaponModels[i].gameObject.SetActive(false);
-        }
-    }
-
-    /// <summary>
-    /// 打开备用武器模型
-    /// </summary>
-    public void SwitchOnBackupWeaponModel()
-    {
-        WeaponType weaponType = _player.weapon.BackupWeapon().weaponType;
-
-        foreach (var backupModel in backupWeaponModels)
-        {
-            if (backupModel.weaponType == weaponType)
-            {
-                backupModel.gameObject.SetActive(true);
-            }
-        }
-    }
-
-    /// <summary>
     /// 根据不同武器切换不同动画Layer，不同的Idle、Fire、Reload、Grab动画
     /// </summary>
     private void SwitchAnimationLayer(int layerIndex)
@@ -156,6 +135,57 @@ public class PlayerWeaponVisuals : MonoBehaviour
 
         _animator.SetLayerWeight(layerIndex, 1);
     }
+
+    #endregion
+
+    #region Backup Weapon Methods
+
+    /// <summary>
+    /// 关闭所有备用武器模型
+    /// </summary>
+    private void SwitchOffBackupWeaponModels()
+    {
+        for (int i = 0; i < backupWeaponModels.Length; i++)
+        {
+            backupWeaponModels[i].Activate(false);
+        }
+    }
+
+    /// <summary>
+    /// 打开备用武器模型
+    /// </summary>
+    public void SwitchOnBackupWeaponModel()
+    {
+        SwitchOffBackupWeaponModels();
+
+        BackupWeaponModel lowHangWeapon = null;
+        BackupWeaponModel backHangWeapon = null;
+        BackupWeaponModel sideHangWeapon = null;
+
+        foreach (var backupModel in backupWeaponModels) // 遍历所有备用武器模型
+        {
+            if (backupModel.weaponType == _player.weapon.CurrentWeapon().weaponType)
+                continue;
+
+            if (_player.weapon.WeaponInSlots(backupModel.weaponType) != null) // 槽位中有这种武器类型
+            {
+                if (backupModel.HangTypeIs(HangType.LowBackHang))
+                    lowHangWeapon = backupModel;
+
+                if (backupModel.HangTypeIs(HangType.BackHang))
+                    backHangWeapon = backupModel;
+
+                if (backupModel.HangTypeIs(HangType.SideHang))
+                    sideHangWeapon = backupModel;
+            }
+        }
+
+        lowHangWeapon?.Activate(true);
+        backHangWeapon?.Activate(true);
+        sideHangWeapon?.Activate(true);
+    }
+
+    #endregion
 
     #region Animation Rigging Methods
 
